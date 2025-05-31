@@ -4,23 +4,28 @@ server = PlantUML(url="http://www.plantuml.com/plantuml/svg/")
 
 source = """
 @startuml
-entity 曲 {
-    + 曲ID [PK]
+abstract class GameObject {
+    # height:int
+    # width:int
+    # coord_x:int
+    # coord_y:int
     --
-    タイトル
     # アーティストID [FK]
     # アルバムID [FK]
 }
-entity アーティスト {
+class Board {
     + アーティストID [PK]
-    アーティスト名
+    --
+    + display():None
+    + play(turn:str, order:list):None
 }
-entity アルバム {
-    + アルバムID [PK]
-    アルバム名
+class Disk {
+    + color:str
+    --
+    + get_symbol():str
 }
-曲 }o--|| アーティスト
-曲 }|--o| アルバム
+GameObject <|-- Board
+GameObject <|-- Disk
 @enduml
 """
 
