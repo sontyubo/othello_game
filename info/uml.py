@@ -10,18 +10,19 @@ abstract class GameObject {
     # coord_x:int
     # coord_y:int
     --
-    # アーティストID [FK]
-    # アルバムID [FK]
 }
 class Board {
-    + アーティストID [PK]
+    # black_list:list[Disk]
+    # white_list:list[Disk]
     --
+    # is_safe():bool
     + display():None
-    + play(turn:str, order:list):None
+    + play(player:str, order:tuple):None
 }
 class Disk {
-    + color:str
+    # color:str
     --
+    + get_color():str
     + get_symbol():str
 }
 GameObject <|-- Board
